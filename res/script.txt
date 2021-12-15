@@ -1,0 +1,30 @@
+load couch.ppm cppm
+load couch.jpg cjpg
+load couch.bmp cbmp
+load couch.png cpng
+menu
+red-component cppm cppm-red
+green-component cppm cppm-green
+blue-component cppm cppm-blue
+luma-component cjpg cjpg-luma
+value-component cjpg cjpg-value
+intensity-component cbmp cbmp-intensity
+horizontal-flip cppm-red cppm-red-flip
+vertical-flip cjpg-luma cjpg-luma-flip
+brighten 50 cjpg-luma-flip cjpg-luma-flip-bright
+brighten -50 cbmp-intensity cbmp-intensity-dark
+grayscale cbmp cbmp-gray
+sepia cbmp cbmp-sepia
+blur cppm-red cppm-red-blur
+sharpen cpng cpng-sharp
+save cpng-sharp script-images/couch-sharp.bmp
+save cppm-red-blur script-images/couch-redcomp-blur.ppm
+save cbmp-sepia script-images/couch-sepia.png
+save cbmp-gray script-images/couch-gray.ppm
+save cbmp-intensity-dark script-images/couch-intense-dark.jpg
+save cjpg-luma-flip-bright script-images/couch-luma-flip-bright.bmp
+save cppm-red-flip script-images/couch-redcomp-flip.png
+save cjpg-value script-images/couch-value.ppm
+save cppm-blue script-images/couch-bluecomp.bmp
+save cppm-green script-images/couch-greencomp.png
+quit
