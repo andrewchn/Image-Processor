@@ -1,0 +1,85 @@
+# Image-Processor
+
+README:
+
+Image Processor:
+
+We have created an Image Processing program. This program gives the user the ability to read in images, which are
+stored in the model, and perform various operations on the images they have read in. Our program also gives users the ability
+to save the images they have edited.
+
+Model:
+The ImageProcessorModel offers the ability to store images, perform operations on them, and return the edited images. Currently,
+the ImageProcessorModel provides the methods to grayscale, flip, and adjust the brightness of stored images, and can save and load
+images as well.
+The ImageProcessorModelImpl implements the ImageProcessorModel.
+Furthermore we have the Image interface, which represents an image. This interface offers the functionality to grayscale, flip, and
+adjust the brightness of itself.
+The SimpleImage class implements the Image.
+We also have the Pixel interface, which offers the ability to grayscale itself and adjust its own brightness. In addition, it can return
+the value of its given color component.
+Our RGBPixel implements the Pixel interface. At any given point in time, the RGBPixel's red, green, or blue values will always be between
+0 and 255.
+Finally, we have created an Enumeration ColorComponent which contains all the possible color components of a given pixel: Red, Green,
+Blue, Luma, Intensity, and Value.
+
+View:
+The ImageProcessorView interface offers the ability to render a message, to display information to the user.
+The ImageProcessorTextView offers the ability to render a message in text form to display information to the user- NOTE:
+does not display images, only text messages.
+
+Controller:
+The ImageProcessorController interface offers the ability to read in inputs from the user, pass them to the model, and call the view
+to display outputs back to the user.
+The ImageProcessorControllerImpl implements the ImageProcessorController class.
+
+Commands:
+The ImageProcessorCommand interface runs a command on the given model. The command to run is determined by the class itself.
+The AdjustBrightnessCommand class implements the ImageProcessorCommand. It adjusts the brightness of a given image in the model by a given
+delta, and saves the result to a given new name in the model.
+The FlipHorizontalCommand class implements the ImageProcessorCommand. It flips a given image horizontally in the model and saves the result
+to a given new name in the model.
+The FlipVerticalCommand class implements the ImageProcessorCommand. It flips a given image vertically in the model and saves the result
+to a given new name in the model.
+The GrayscaleCommand class implements the ImageProcessorCommand. It grayscales a given image by the given color component in the model and
+saves the result to a given new name in the model.
+The LoadImageCommand class implements the ImageProcessorCommand. It loads a given image into the model.
+The SaveImageCommand class implements the ImageProcessorCommand. It takes a given image saved in the model and saves it locally.
+
+Running the Program:
+
+The following is a sample sequence of commands to perform some operations on an image of couch, and save the results as images
+
+To begin, navigate to src/ImageProcessor and run the main method.
+
+Your inputs will be entered into the console while the program runs.
+Type in exactly what is written in the quotations (do not include the quotation marks), and hit enter after each quoted block of input.
+
+Some additional information about the operations you are running has been included.
+
+~~~
+After initiating the program, load the couch image into the program.
+Command: "load", Arguments: "res/couch.ppm couch"
+
+Next brighten the couch image by 20 and store it as couch-brighter.
+Command: "brighten", Arguments: "20 couch couch-brighter"
+
+Next grayscale the brightened couch image by its red value and store it as couch-brighter-redcomp.
+Command: "red-component", Arguments: "couch-brighter couch-brighter-redcomp"
+
+Next vertical flip the brightened grayscaled couch and store it as couch-brighter-redcomp-vertflip.
+Command: "vertical-flip", Arguments: "couch-brighter-redcomp couch-brighter-redcomp-vertflip"
+
+Finally we can save all of our changed couch images to disk. These will be found in the 'Image Processor/res' folder.
+Command: "save", Arguments: "couch-brighter res/brighter-couch.ppm"
+Command: "save", Arguments: "couch-brighter-redcomp res/brighter-redcomp-couch.ppm"
+Command: "save", Arguments: "couch-brighter-redcomp-vertflip res/brighter-redcomp-vertflipped-couch.ppm"
+
+Now, quit the program.
+Command: "quit"
+~~~
+
+Image citation: (note that image was cropped and scaled down for use in this project)
+https://unsplash.com/photos/fZuleEfeA1Q
+Published 4/11/19 by Phillip Goldsberry
+Free to use under the Unsplash License
